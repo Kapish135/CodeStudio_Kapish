@@ -1,0 +1,21 @@
+#include <bits/stdc++.h> 
+int minSubarrays(vector<int>arr) {
+    // Write your code here
+    int right = arr.size() -1;
+    int left = 0;
+
+    int cnt = 0;
+    while(right >= 0){
+        for(left = 0;left <= right;left++){
+
+            if(__gcd(arr[left],arr[right]) > 1){
+                cnt++;
+                right = left - 1;
+                break;
+            }
+
+            if(left == right) return -1;
+        }
+    }
+    return cnt;
+}

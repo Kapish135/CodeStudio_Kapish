@@ -1,0 +1,22 @@
+void inorder(TreeNode<int> * root,vector<int>&help){
+    if(!root) return;
+    inorder(root->left,help);
+    help.push_back(root->val);
+    inorder(root->right,help);
+}
+int floorInBST(TreeNode<int> * root, int X)
+{
+    // Write your code here.
+    vector<int>help;
+    inorder(root,help);
+
+    int min_ = *min_element(help.begin(),help.end());
+
+    int ans;
+    for(auto a:help){
+        if(a <= X){
+            ans = a;
+        }
+    }
+    return ans;
+}

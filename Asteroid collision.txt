@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+vector<int> collidingAsteroids(vector<int> &asteroids)
+{
+    //    Write your code here.
+    stack<int>s;
+    for(auto a:asteroids){
+        if(a > 0 || s.empty()){
+            s.push(a);
+        }
+        else{
+            while(!s.empty() && s.top() > 0 && abs(a) > s.top()){
+                s.pop();
+            }
+            if(!s.empty() && s.top() == abs(a)){
+                s.pop();
+            }
+            else{
+                if(s.empty() || s.top() < 0) s.push(a);
+            }
+        }
+    }
+    vector<int>ans;
+    while(!s.empty()) ans.push_back(s.top()),s.pop();
+    reverse(ans.begin(),ans.end());
+    return ans;
+}

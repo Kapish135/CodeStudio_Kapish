@@ -1,0 +1,20 @@
+#include <bits/stdc++.h> 
+vector<int> max_amplitude(int n, vector<int> &loud){
+    // Write your code here.
+    sort(loud.begin(),loud.end());
+
+    vector<int>ans;
+    int cnt = 0;
+    for(int i = 0;i < n;i++){
+        if(loud[i] != 1) ans.push_back(loud[i]);
+        else cnt++;
+    }
+
+    if(pow(ans[0],ans[n-1]) < pow(ans[n-1],ans[0])){
+        reverse(ans.begin(),ans.end());
+    }
+    for(int i = 1;i <= cnt;i++){
+        ans.push_back(1);
+    }
+    return ans;
+}
